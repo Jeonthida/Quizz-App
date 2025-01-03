@@ -1,7 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/answer_buntton.dart';
+import 'package:myapp/data/quizz.dart';
 
-class QuestionsScreen extends StatelessWidget {
+class QuestionsScreen extends StatefulWidget {
   const QuestionsScreen({super.key});
+
+  @override
+  State<StatefulWidget> createState() {
+    return _QuestionsScreenState();
+  }
+}
+
+class _QuestionsScreenState extends State<QuestionsScreen> {
+  final currentQuestion = questions[0];
 
   @override
   Widget build(BuildContext context) {
@@ -13,10 +24,24 @@ class QuestionsScreen extends StatelessWidget {
               colors: [Colors.purple, Colors.deepPurple],
             ),
           ),
-          child: Column(
-            children: [
-              Text('What are the main building blocks of Flutter UIs?')
-            ],
+          child: SizedBox(
+            child: Container(
+              margin: const EdgeInsets.all(40),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    currentQuestion.question,
+                    style: TextStyle(color: Colors.white),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 30),
+                  ...currentQuestion.answers.map((answer) {
+                    return AnswerBuntton(answer);
+                  }),
+                ],
+              ),
+            ),
           ),
         ),
       ),

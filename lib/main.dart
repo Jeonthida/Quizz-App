@@ -3,15 +3,18 @@ import 'package:myapp/questions_screen.dart';
 import 'package:myapp/start_screen.dart';
 
 void main() {
-  runApp(MaterialApp(
+  runApp(
+    MaterialApp(
       home: Scaffold(
-    body: Container(
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          colors: [Colors.purple, Colors.deepPurple],
+        body: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.purple, Colors.deepPurple],
+            ),
+          ),
+          child: const QuestionsScreen(),
         ),
       ),
-      child: const QuestionsScreen()
     ),
-  ),),);
+  );
 }
